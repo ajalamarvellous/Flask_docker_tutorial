@@ -17,7 +17,7 @@ app = Flask("California_model")
 @app.route("/predict", methods=["POST"])
 def predict():
     data = request.get_json()
-    location = "./test_logit.pkl"
+    location = "./assets/test_logit.pkl"
     #vect = load_model("./vectorizer.bin")
     model = load_model(location)
     #data = vect.transform(data)
