@@ -55,6 +55,15 @@ To run the flask app in production (and not deployment mode)
    gunicorn --bind 0.0.0.0:1200 deployment:app
 ```
 
+To download docker
+```bash
+
+```
+
+To load and run a docker image
+```bash
+   docker run -it --rm python:3.8.2-slim
+```
 ### To get started
 * Create a new directory on your PC
 ```bash
