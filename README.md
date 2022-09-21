@@ -14,6 +14,7 @@ I hope to add the fastapi code also soon
 
 ### Folder structure
 ---------------------
+```
    ├── LICENSE
    ├── README.md          <- The README file.
    │
@@ -28,6 +29,7 @@ I hope to add the fastapi code also soon
        ├──test_logit.pkl  <- pickled linear regression model
        │
        └──vectorizer      <- pickled preprocessing function
+```
 
 ### Note
 To run the flask app
@@ -46,24 +48,51 @@ where you create the data in the form you want and prepocess in your python
 script before feeding your model (check the notebook for more explanation)
 
 To run the flask app in production (and not deployment mode)
-* Download gunicorn first (if windows use WSL)
+* Download gunicorn first (if windows use waitress)
 ```bash
    pip install gunicorn
+```
+> for windows users
+```bash
+   pip install waitress
 ```
 * Run the syntax on the terminal
 ```bash
    gunicorn --bind 0.0.0.0:1200 deployment:app
 ```
-
+> for windows users
+```bash
+   waitress-serve --listen=0.0.0.0:1200 deployment:app
+```
 To download docker
 ```bash
 
 ```
 
-To load and run a docker image
+To build and run a docker image from the terminal
 ```bash
    docker run -it --rm python:3.8.2-slim
 ```
+To build and run a docker image from the terminal with bash
+endpoint rather than iteractive python
+```bash
+   docker run -it --rm --entrypoint=bash python:3.8.2-slim
+```
+To build docker image from docker file
+```bash
+   docker build -t test-docker .
+```
+explained as
+* docker build - instructs docker to build an image
+* -t test-docker - tag of the docker image as test-docker
+* . - docker file in the same directory
+
+To run an already built docker image
+```bash
+   docker run -it --rm <tag-name>
+```
+
+
 ### To get started
 * Create a new directory on your PC
 ```bash
