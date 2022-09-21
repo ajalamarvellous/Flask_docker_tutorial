@@ -16,13 +16,26 @@ app = Flask("California_model")
 
 @app.route("/predict", methods=["POST"])
 def predict():
+    # Requests get the data being sent to our API
     data = request.get_json()
+
+    # Location to the assets (pickled model and processing function)
     location = "./assets/test_logit.pkl"
     #vect = load_model("./vectorizer.bin")
+
+    # Loads the model and preprocessing function
     model = load_model(location)
     #data = vect.transform(data)
+
+    # Extracts the data in the json {"data": [1, 3, ...]} sent to our api
     data = data["data"]
+
+    # Model prediction
     avg_price = model.predict(data)
+
+    # checks if data sent to the model is one sample or more and converts to
+    # python format easily understandable by flask (the result returned by the
+    # model are usually numpy arrays)
     if len(data) == 1:
         result = {
             "result": float(avg_price)
