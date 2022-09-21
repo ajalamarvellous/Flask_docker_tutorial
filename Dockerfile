@@ -2,10 +2,13 @@ FROM python:3.8.2-slim
 
 RUN pip install --upgrade pip
 
-WORKDIR /app
-COPY ["deployment.py", "requirements.txt", "assets", "/"]
+WORKDIR ../app
+COPY ["deployment.py", "requirements.txt", "assets/test_logit.pkl", "assets/vectorizer.bin", "./"]
 
-RUN pip install -r /requirements.txt
+RUN mkdir assets
+RUN mv test_logit.pkl vectorizer.bin assets/
+
+RUN pip install -r requirements.txt
 
 EXPOSE 1200
 
